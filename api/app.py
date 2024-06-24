@@ -19,7 +19,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 
 app = Flask(__name__)
-CORS(app)
+#CORS(app)
 # CORS(app, resources={r"/users/*": {"origins": "*"}})
 CORS(app, resources={r"/users/*": {"origins": "*", "methods": [
      "GET", "POST", "PUT", "DELETE"], "allow_headers": ["Content-Type"]}})
