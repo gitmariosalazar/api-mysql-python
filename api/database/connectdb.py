@@ -31,3 +31,5 @@ def get_connection():
         )
     except Exception as ex:
         raise ex
+
+print("Connect database: ",get_connection())
