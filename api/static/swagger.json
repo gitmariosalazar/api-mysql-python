@@ -19,10 +19,10 @@
     },
     "servers": [
         {
-            "url": "http://localhost:5000/users"
+            "url": "http://127.0.0.1:5000/users"
         },
         {
-            "url": "https://app-sqlserver-python-two.vercel.app/users"
+            "url": "https://api-mysql-python.vercel.app/users"
         },
         {
             "url": "https://app-postgresql-python.vercel.app/users"
