@@ -1,0 +1,44 @@
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: black;
+}
+
+.container {
+  max-width: 800px; /* Ajusta el ancho máximo del contenido */
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+  padding: 5px;
+}
+
+.title {
+  text-align: center; /* Centra el texto dentro del contenedor */
+  margin-bottom: 10px;
+  color: aliceblue;
+  font-weight: bold;
+}
+
+.header-swagger {
+  text-align: center; /* Centra el contenido dentro de este contenedor */
+}
+
+.box-images {
+  display: flex; /* Usa flexbox para alinear las imágenes horizontalmente */
+  justify-content: center; /* Centra las imágenes dentro del contenedor */
+  gap: 20px; /* Espacio entre las imágenes */
+}
+
+.image {
+  max-width: 150px; /* Ancho máximo de las imágenes */
+}
+
+.image img {
+  width: 50%; /* Para asegurar que las imágenes sean responsive */
+  height: auto;
+}

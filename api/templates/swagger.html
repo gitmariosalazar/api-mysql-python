@@ -8,6 +8,10 @@
       type="text/css"
       href="https://mariosalazar-styles-swagger-ui.vercel.app/css/swagger-ui.css"
     />
+    <link
+      rel="stylesheet"
+      href="{{url_for ('static', filename = 'css/swagerheader.css')}}"
+    />
     <style>
       body {
         margin: 0;
@@ -16,6 +20,24 @@
     </style>
   </head>
   <body>
+    <div class="container">
+      <div class="title">
+        <p>API - Python & MySQL</p>
+      </div>
+      <div class="header-swagger">
+        <div class="box-images">
+          <div class="image">
+            <img
+              src="https://i.postimg.cc/L4WMVnWr/python-original.png"
+              alt="Python"
+            />
+          </div>
+          <div class="image">
+            <img src="https://i.postimg.cc/T1yWbzWB/mysql.png" alt="MySQL" />
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="swagger-ui"></div>
     <script src="{{ url_for('static', filename='swagger-ui/swagger-ui-bundle.js') }}"></script>
     <script src="{{ url_for('static', filename='swagger-ui/swagger-ui-standalone-preset.js') }}"></script>

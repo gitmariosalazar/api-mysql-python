@@ -72,7 +72,7 @@ def index():
 
 """
 @app.route('/')
-def index():
+def index(): 
     domain = request.host_url + "swagger/docs"
     return render_template('index.html', domain=domain)
 """
@@ -80,7 +80,15 @@ def index():
 
 @app.route('/swagger/docs')
 def swagger():
-    return render_template('swagger.html', title="My API")
+    domain = request.host_url+"users"
+    json_file_path = os.path.join(app.static_folder, 'swagger.json')
+    with open(json_file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+        (data['servers'][0])['url']=""+domain
+        print((data['servers'][0])['url'])
+    with open(json_file_path, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+    return render_template('swagger.html', title="API MySQL - Python")
 
 
 @app.route('/users/delete_user/<id>/<password>', methods=['DELETE'])

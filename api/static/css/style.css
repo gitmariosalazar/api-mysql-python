@@ -11,10 +11,12 @@ section {
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background: url("../img/night-moon.jpg") no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: image-set(url(https://getwallpapers.com/wallpaper/full/a/3/d/1343476-northern-lights-wallpaper-4k-3840x2160-for-mobile-hd.jpg));
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; /* Ajuste para que la imagen cubra el contenedor */
 }
+
 .form-box {
   position: relative;
   width: 400px;
@@ -177,3 +179,5 @@ button:hover {
   cursor: pointer;
   color: maroon;
 }
+
+/*------------------------*/

@@ -1,1057 +1,1060 @@
 {
-  "openapi": "3.0.3",
-  "info": {
-    "title": "Swagger API MySQL AWS and Python - OpenAPI 3.0",
-    "description": "Test",
-    "termsOfService": "http://swagger.io/terms/",
-    "contact": {
-      "email": "apiteam@swagger.io"
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Swagger API MySQL AWS and Python - OpenAPI 3.0",
+        "description": "Test",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.11"
     },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
-    "version": "1.0.11"
-  },
-  "externalDocs": {
-    "description": "Find out more about Swagger",
-    "url": "http://swagger.io"
-  },
-  "servers": [
-    {
-      "url": "https://api-mysql-python.vercel.app/users"
-    },
-    {
-      "url": "http://localhost:5000/users"
-    }
-  ],
-  "tags": [
-    {
-      "name": "language",
-      "description": "Everything about your Programming Languages",
-      "externalDocs": {
-        "description": "Find out more",
+    "externalDocs": {
+        "description": "Find out more about Swagger",
         "url": "http://swagger.io"
-      }
     },
-    {
-      "name": "users",
-      "description": "Operations about users"
+    "servers": [
+        {
+            "url": "http://localhost:5000/users"
+        },
+        {
+            "url": "https://app-sqlserver-python-two.vercel.app/users"
+        },
+        {
+            "url": "https://app-postgresql-python.vercel.app/users"
+        }
+    ],
+    "tags": [
+        {
+            "name": "language",
+            "description": "Everything about your Programming Languages",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "users",
+            "description": "Operations about users"
+        }
+    ],
+    "paths": {
+        "/update_languagelearn/{id}": {
+            "put": {
+                "tags": [
+                    "language"
+                ],
+                "summary": "Update an existing programming language by Id ❌✅",
+                "description": "Update the description and knowledge level of an existing programming language ",
+                "operationId": "updateLanguage",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of programming language to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Update an existent language in the store",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Languages"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Languages"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Languages"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Languages"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Languages"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Programming languages not found"
+                    },
+                    "422": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/create_language": {
+            "post": {
+                "tags": [
+                    "language"
+                ],
+                "summary": "Create a new Programming Language ❌✅",
+                "description": "Create or add new Programming Language!",
+                "operationId": "createLanguage",
+                "requestBody": {
+                    "description": "Create an existent language",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Languages"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Languages"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Languages"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Languages"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Languages"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Programming languages not found"
+                    },
+                    "422": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/get_languages": {
+            "get": {
+                "tags": [
+                    "language"
+                ],
+                "summary": "Finds All Programming languages ❌✅",
+                "description": "Multiple status values can be provided with comma separated strings",
+                "operationId": "getLanguages",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Languages"
+                                    }
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Languages"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/get_languagebyuser/{id}": {
+            "get": {
+                "tags": [
+                    "language"
+                ],
+                "summary": "Find Programming Language by ID User ❌✅",
+                "description": "Returns Programming Languages for User",
+                "operationId": "getLanguageByIdUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Programming Language to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Languages"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Languages"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Programming languages not found"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/get_languagebyid/{id_language}": {
+            "get": {
+                "tags": [
+                    "language"
+                ],
+                "summary": "Find Programming Language by ID ❌✅",
+                "description": "Returns a single Programming Language",
+                "operationId": "getLanguageById",
+                "parameters": [
+                    {
+                        "name": "id_language",
+                        "in": "path",
+                        "description": "ID of Programming Language to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Languages"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Languages"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Programming languages not found"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/delete_language/{id}": {
+            "delete": {
+                "tags": [
+                    "language"
+                ],
+                "summary": "Delete purchase Programming Language by ID ❌✅",
+                "description": "For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors",
+                "operationId": "deleteLanguage",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Programming Language that needs to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid id value"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/create_user": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create user or add new User ✅",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "createUser",
+                "requestBody": {
+                    "description": "Created user object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/update_user/{id_user}": {
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Update exist user on database! ✅",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "id_user",
+                        "in": "path",
+                        "description": "ID of user to update",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Created user object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUser"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUser"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/change_password/{email}": {
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Change user password on database! ✅",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "changePassword",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "ID of user to change password!",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Created user object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePassword"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePassword"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePassword"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/login_user/{id_user}/{password}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Logs user into the system ✅",
+                "description": "",
+                "operationId": "loginUser",
+                "parameters": [
+                    {
+                        "name": "id_user",
+                        "in": "path",
+                        "description": "The user name for login",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "email"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "The password for login in clear text",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "password"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "headers": {
+                            "X-Rate-Limit": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "X-Expires-After": {
+                                "description": "date in UTC when token expires",
+                                "schema": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username/password supplied"
+                    }
+                }
+            }
+        },
+        "/user/logout": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Logs out current logged in user session ❌",
+                "description": "",
+                "operationId": "logoutUser",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/setenable_user/{username}": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Update user set Enable ✅",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "setEnable",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "name that need to be set enable",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "email"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/get_userbyemail/{email}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get user by user email ✅",
+                "description": "",
+                "operationId": "email",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The name that needs to be fetched. Use john@email.com for testing. ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user email supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/get_userbyusername/{username}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get user by user name ✅",
+                "description": "",
+                "operationId": "username",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "The name that needs to be fetched. Use PRE-1003938472 for testing. ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/delete_user/{id_user}/{password}": {
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Delete user by user ID ✅",
+                "description": "ID of the user that needs to be deleted",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "name": "id_user",
+                        "in": "path",
+                        "description": "The name that needs to be fetched. Use 1 for testing. ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "The name that needs to be fetched. Use ****** for testing. ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid username and password value"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/get_users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Returns all users from database! ✅",
+                "description": "Returns a map of users",
+                "operationId": "getUsers",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "integer",
+                                        "format": "int32"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Languages": {
+                "type": "object",
+                "properties": {
+                    "knowledge_level": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 10
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Write a detailed description about the programming language!"
+                    },
+                    "user_language": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 1
+                    },
+                    "language_programming": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 15
+                    }
+                },
+                "xml": {
+                    "name": "language"
+                }
+            },
+            "Address": {
+                "type": "object",
+                "properties": {
+                    "street": {
+                        "type": "string",
+                        "example": "437 Lytton"
+                    },
+                    "city": {
+                        "type": "string",
+                        "example": "Palo Alto"
+                    },
+                    "state": {
+                        "type": "string",
+                        "example": "CA"
+                    },
+                    "zip": {
+                        "type": "string",
+                        "example": "94301"
+                    }
+                },
+                "xml": {
+                    "name": "address"
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id_user": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 10
+                    },
+                    "user_name": {
+                        "type": "string",
+                        "example": "PRE-100101010"
+                    },
+                    "first_name": {
+                        "type": "string",
+                        "example": "John"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "example": "James"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "john@email.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "12345"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "example": "12345"
+                    },
+                    "date_born": {
+                        "type": "string",
+                        "example": "02/02/1995"
+                    },
+                    "register_date": {
+                        "type": "string",
+                        "example": "02/02/1995"
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": "Address",
+                        "format": "int32",
+                        "example": "El Tejar - Ibarra"
+                    },
+                    "card_id_person": {
+                        "type": "string",
+                        "description": "Rol User",
+                        "example": "1003938477"
+                    },
+                    "gender": {
+                        "type": "integer",
+                        "description": "Gender",
+                        "format": "int32",
+                        "example": 1
+                    },
+                    "id_rol": {
+                        "type": "integer",
+                        "description": "Rol User",
+                        "format": "int32",
+                        "example": 1
+                    },
+                    "user_state": {
+                        "type": "integer",
+                        "description": "User Status",
+                        "format": "int32",
+                        "example": 1
+                    },
+                    "user_delete": {
+                        "type": "integer",
+                        "description": "User Delete",
+                        "format": "int32",
+                        "example": 1
+                    }
+                },
+                "xml": {
+                    "name": "user"
+                }
+            },
+            "UpdateUser": {
+                "type": "object",
+                "properties": {
+                    "first_name": {
+                        "type": "string",
+                        "example": "John"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "example": "James"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "john@email.com"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "example": "12345"
+                    },
+                    "date_born": {
+                        "type": "string",
+                        "example": "02/02/1995"
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": "Address",
+                        "example": "El Tejar - Ibarra"
+                    },
+                    "card_id_person": {
+                        "type": "string",
+                        "description": "Rol User",
+                        "example": "1003938477"
+                    },
+                    "gender": {
+                        "type": "integer",
+                        "description": "Gender",
+                        "format": "int32",
+                        "example": 1
+                    },
+                    "id_rol": {
+                        "type": "integer",
+                        "description": "Rol User",
+                        "format": "int32",
+                        "example": 1
+                    }
+                },
+                "xml": {
+                    "name": "updateuser"
+                }
+            },
+            "ChangePassword": {
+                "type": "object",
+                "properties": {
+                    "lastpassword": {
+                        "type": "string",
+                        "description": "Enter the last password",
+                        "example": "********************"
+                    },
+                    "new_password": {
+                        "type": "string",
+                        "description": "Enter the new password",
+                        "example": "*******************"
+                    },
+                    "rep_password": {
+                        "type": "string",
+                        "description": "Repeat the new password to confirm",
+                        "example": "*******************"
+                    }
+                },
+                "xml": {
+                    "name": "ChangePassword"
+                }
+            },
+            "ApiResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "xml": {
+                    "name": "##default"
+                }
+            }
+        },
+        "requestBodies": {
+            "UserArray": {
+                "description": "List of user object",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "jwt": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
     }
-  ],
-  "paths": {
-    "/update_languagelearn/{id}": {
-      "put": {
-        "tags": [
-          "language"
-        ],
-        "summary": "Update an existing programming language by Id ❌✅",
-        "description": "Update the description and knowledge level of an existing programming language ",
-        "operationId": "updateLanguage",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of programming language to update",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Update an existent language in the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Languages"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/Languages"
-              }
-            },
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/Languages"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Languages"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/Languages"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Programming languages not found"
-          },
-          "422": {
-            "description": "Validation exception"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/create_language": {
-      "post": {
-        "tags": [
-          "language"
-        ],
-        "summary": "Create a new Programming Language ❌✅",
-        "description": "Create or add new Programming Language!",
-        "operationId": "createLanguage",
-        "requestBody": {
-          "description": "Create an existent language",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Languages"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/Languages"
-              }
-            },
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/Languages"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Languages"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/Languages"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Programming languages not found"
-          },
-          "422": {
-            "description": "Validation exception"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/get_languages": {
-      "get": {
-        "tags": [
-          "language"
-        ],
-        "summary": "Finds All Programming languages ❌✅",
-        "description": "Multiple status values can be provided with comma separated strings",
-        "operationId": "getLanguages",
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Languages"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Languages"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid status value"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/get_languagebyuser/{id}": {
-      "get": {
-        "tags": [
-          "language"
-        ],
-        "summary": "Find Programming Language by ID User ❌✅",
-        "description": "Returns Programming Languages for User",
-        "operationId": "getLanguageByIdUser",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of Programming Language to return",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Languages"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/Languages"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Programming languages not found"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/get_languagebyid/{id_language}": {
-      "get": {
-        "tags": [
-          "language"
-        ],
-        "summary": "Find Programming Language by ID ❌✅",
-        "description": "Returns a single Programming Language",
-        "operationId": "getLanguageById",
-        "parameters": [
-          {
-            "name": "id_language",
-            "in": "path",
-            "description": "ID of Programming Language to return",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Languages"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/Languages"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Programming languages not found"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/delete_language/{id}": {
-      "delete": {
-        "tags": [
-          "language"
-        ],
-        "summary": "Delete purchase Programming Language by ID ❌✅",
-        "description": "For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors",
-        "operationId": "deleteLanguage",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the Programming Language that needs to be deleted",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Invalid id value"
-          }
-        },
-        "security": []
-      }
-    },
-    "/create_user": {
-      "post": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Create user or add new User ✅",
-        "description": "This can only be done by the logged in user.",
-        "operationId": "createUser",
-        "requestBody": {
-          "description": "Created user object",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              }
-            },
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              }
-            }
-          }
-        },
-        "responses": {
-          "default": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/update_user/{id_user}": {
-      "put": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Update exist user on database! ✅",
-        "description": "This can only be done by the logged in user.",
-        "operationId": "updateUser",
-        "parameters": [
-          {
-            "name": "id_user",
-            "in": "path",
-            "description": "ID of user to update",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Created user object",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUser"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUser"
-              }
-            },
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUser"
-              }
-            }
-          }
-        },
-        "responses": {
-          "default": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/change_password/{email}": {
-      "put": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Change user password on database! ✅",
-        "description": "This can only be done by the logged in user.",
-        "operationId": "changePassword",
-        "parameters": [
-          {
-            "name": "email",
-            "in": "path",
-            "description": "ID of user to change password!",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Created user object",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ChangePassword"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/ChangePassword"
-              }
-            },
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/ChangePassword"
-              }
-            }
-          }
-        },
-        "responses": {
-          "default": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/login_user/{id_user}/{password}": {
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Logs user into the system ✅",
-        "description": "",
-        "operationId": "loginUser",
-        "parameters": [
-          {
-            "name": "id_user",
-            "in": "path",
-            "description": "The user name for login",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "email"
-            }
-          },
-          {
-            "name": "password",
-            "in": "path",
-            "description": "The password for login in clear text",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "password"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/xml": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              },
-              "X-Expires-After": {
-                "description": "date in UTC when token expires",
-                "schema": {
-                  "type": "string",
-                  "format": "date-time"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid username/password supplied"
-          }
-        }
-      }
-    },
-    "/user/logout": {
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Logs out current logged in user session ❌",
-        "description": "",
-        "operationId": "logoutUser",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/setenable_user/{username}": {
-      "post": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Update user set Enable ✅",
-        "description": "This can only be done by the logged in user.",
-        "operationId": "setEnable",
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "description": "name that need to be set enable",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "email"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/get_userbyemail/{email}": {
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Get user by user email ✅",
-        "description": "",
-        "operationId": "email",
-        "parameters": [
-          {
-            "name": "email",
-            "in": "path",
-            "description": "The name that needs to be fetched. Use john@email.com for testing. ",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid user email supplied"
-          },
-          "404": {
-            "description": "User not found"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/get_userbyusername/{username}": {
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Get user by user name ✅",
-        "description": "",
-        "operationId": "username",
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "description": "The name that needs to be fetched. Use PRE-1003938472 for testing. ",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid username supplied"
-          },
-          "404": {
-            "description": "User not found"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/delete_user/{id_user}/{password}": {
-      "delete": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Delete user by user ID ✅",
-        "description": "ID of the user that needs to be deleted",
-        "operationId": "deleteUser",
-        "parameters": [
-          {
-            "name": "id_user",
-            "in": "path",
-            "description": "The name that needs to be fetched. Use 1 for testing. ",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "password",
-            "in": "path",
-            "description": "The name that needs to be fetched. Use ****** for testing. ",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Invalid username and password value"
-          }
-        },
-        "security": []
-      }
-    },
-    "/get_users": {
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Returns all users from database! ✅",
-        "description": "Returns a map of users",
-        "operationId": "getUsers",
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Languages": {
-        "type": "object",
-        "properties": {
-          "knowledge_level": {
-            "type": "integer",
-            "format": "int64",
-            "example": 10
-          },
-          "description": {
-            "type": "string",
-            "example": "Write a detailed description about the programming language!"
-          },
-          "user_language": {
-            "type": "integer",
-            "format": "int32",
-            "example": 1
-          },
-          "language_programming": {
-            "type": "integer",
-            "format": "int32",
-            "example": 15
-          }
-        },
-        "xml": {
-          "name": "language"
-        }
-      },
-      "Address": {
-        "type": "object",
-        "properties": {
-          "street": {
-            "type": "string",
-            "example": "437 Lytton"
-          },
-          "city": {
-            "type": "string",
-            "example": "Palo Alto"
-          },
-          "state": {
-            "type": "string",
-            "example": "CA"
-          },
-          "zip": {
-            "type": "string",
-            "example": "94301"
-          }
-        },
-        "xml": {
-          "name": "address"
-        }
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id_user": {
-            "type": "integer",
-            "format": "int64",
-            "example": 10
-          },
-          "user_name": {
-            "type": "string",
-            "example": "PRE-100101010"
-          },
-          "first_name": {
-            "type": "string",
-            "example": "John"
-          },
-          "last_name": {
-            "type": "string",
-            "example": "James"
-          },
-          "email": {
-            "type": "string",
-            "example": "john@email.com"
-          },
-          "password": {
-            "type": "string",
-            "example": "12345"
-          },
-          "phone": {
-            "type": "string",
-            "example": "12345"
-          },
-          "date_born": {
-            "type": "string",
-            "example": "02/02/1995"
-          },
-          "register_date": {
-            "type": "string",
-            "example": "02/02/1995"
-          },
-          "address": {
-            "type": "string",
-            "description": "Address",
-            "format": "int32",
-            "example": "El Tejar - Ibarra"
-          },
-          "card_id_person": {
-            "type": "string",
-            "description": "Rol User",
-            "example": "1003938477"
-          },
-          "gender": {
-            "type": "integer",
-            "description": "Gender",
-            "format": "int32",
-            "example": 1
-          },
-          "id_rol": {
-            "type": "integer",
-            "description": "Rol User",
-            "format": "int32",
-            "example": 1
-          },
-          "user_state": {
-            "type": "integer",
-            "description": "User Status",
-            "format": "int32",
-            "example": 1
-          },
-          "user_delete": {
-            "type": "integer",
-            "description": "User Delete",
-            "format": "int32",
-            "example": 1
-          }
-        },
-        "xml": {
-          "name": "user"
-        }
-      },
-      "UpdateUser": {
-        "type": "object",
-        "properties": {
-          "first_name": {
-            "type": "string",
-            "example": "John"
-          },
-          "last_name": {
-            "type": "string",
-            "example": "James"
-          },
-          "email": {
-            "type": "string",
-            "example": "john@email.com"
-          },
-          "phone": {
-            "type": "string",
-            "example": "12345"
-          },
-          "date_born": {
-            "type": "string",
-            "example": "02/02/1995"
-          },
-          "address": {
-            "type": "string",
-            "description": "Address",
-            "example": "El Tejar - Ibarra"
-          },
-          "card_id_person": {
-            "type": "string",
-            "description": "Rol User",
-            "example": "1003938477"
-          },
-          "gender": {
-            "type": "integer",
-            "description": "Gender",
-            "format": "int32",
-            "example": 1
-          },
-          "id_rol": {
-            "type": "integer",
-            "description": "Rol User",
-            "format": "int32",
-            "example": 1
-          }
-        },
-        "xml": {
-          "name": "updateuser"
-        }
-      },
-      "ChangePassword": {
-        "type": "object",
-        "properties": {
-          "lastpassword": {
-            "type": "string",
-            "description": "Enter the last password",
-            "example": "********************"
-          },
-          "new_password": {
-            "type": "string",
-            "description": "Enter the new password",
-            "example": "*******************"
-          },
-          "rep_password": {
-            "type": "string",
-            "description": "Repeat the new password to confirm",
-            "example": "*******************"
-          }
-        },
-        "xml": {
-          "name": "ChangePassword"
-        }
-      },
-      "ApiResponse": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "type": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "xml": {
-          "name": "##default"
-        }
-      }
-    },
-    "requestBodies": {
-      "UserArray": {
-        "description": "List of user object",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/User"
-              }
-            }
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "jwt": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
-      }
-    }
-  }
 }
