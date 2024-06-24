@@ -1,0 +1,8 @@
+pip install flask python-decouple psycopg2-binary python-dotenv Flask-Cors pytest Flask-PyMongo flask-mongoengine PyJWT Flask-Login
+pip install pymssql
+CREATE REACT app
+
+npx create-react-app my-app
+conda activate test
+
+conda create --name my-env python=3.6

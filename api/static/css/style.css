@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins", sans-serif;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: url("../img/night-moon.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.form-box {
+  position: relative;
+  width: 400px;
+  height: 450px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h2 {
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+}
+.inputbox {
+  position: relative;
+  margin: 30px 0;
+  width: 310px;
+  border-bottom: 1px solid #fff;
+}
+.inputbox label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: black;
+  font-weight: 600;
+  font-size: 1em;
+  pointer-events: none;
+  margin-left: 10px;
+}
+input:focus ~ label,
+input:valid ~ label {
+  top: -15px;
+}
+
+.inputbox input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: yellowgreen;
+  border-radius: 1px;
+  font-size: 1em;
+  padding: 0 0 0 5px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.inputbox span {
+  position: absolute;
+  right: 100%;
+  color: black;
+  font-size: 1.5em;
+  top: 12px;
+}
+
+.forget {
+  margin: -15px 0 15px;
+  font-size: 0.9em;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.forget label input {
+  margin-right: 3px;
+}
+
+.forget label a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.forget label a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  color: gray;
+}
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border-radius: 15px;
+  background: green;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+button:hover {
+  background: gray;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+  color: #fff;
+  text-align: center;
+  margin: 25px 0 10px;
+}
+
+.register p a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+.register p a:hover {
+  text-decoration: none;
+  color: gray;
+  font-weight: bold;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.btn-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background: blueviolet;
+  color: black;
+  width: 100%;
+  height: 30px;
+  border: 1px solid black; /* Añadir un borde de color */
+  padding: 5px; /* Añadir un poco de padding para separar el texto del borde */
+  border-radius: 5px;
+}
+
+.btn-login:hover {
+  cursor: pointer;
+  background: green;
+  color: maroon;
+}
+
+.btn-watch-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+.btn-watch-video:hover {
+  cursor: pointer;
+  color: maroon;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://mariosalazar-styles-swagger-ui.vercel.app/css/swagger-ui.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script src="{{ url_for('static', filename='swagger-ui/swagger-ui-bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename='swagger-ui/swagger-ui-standalone-preset.js') }}"></script>
+    <script>
+      window.onload = function () {
+        const ui = SwaggerUIBundle({
+          url: "{{ url_for('static', filename='swagger.json') }}",
+          dom_id: "#swagger-ui",
+          presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+          layout: "StandaloneLayout",
+        });
+        window.ui = ui;
+      };
+    </script>
+  </body>
+</html>
